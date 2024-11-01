@@ -11,9 +11,9 @@ class UserController extends Controller
 {
     // Validate the incoming request data with specific rules and custom error messages
     $request->validate([
-        'name' => 'required|max:255|string', // Ensure 'name' is required, a string, and no longer than 255 characters
+       'name' => 'required|max:255|string', // Ensure 'name' is required, a string, and no longer than 255 characters
         'email' => 'required|email|unique:users,email', // Ensure 'email' is required, a valid format, and unique in the 'users' table
-        'phone' => ['required', 'digits:10'], // Ensure 'phone' is required and exactly 10 digits
+        'phone' => ['required', 'digits:10', 'regex:/^[6-9]\d{9}$/'], // Ensure 'phone' is required and exactly 10 digits
         'description' => 'required|string', // Ensure 'description' is required and a string
         'role_id' => 'required|exists:roles,id', // Ensure 'role_id' is required and references an existing ID in the 'roles' table
         'profile_image' => 'required|image|mimes:jpeg,png,jpg|max:2048' // Ensure 'profile_image' is required, an image file, and one of the allowed MIME types with a max size of 2MB

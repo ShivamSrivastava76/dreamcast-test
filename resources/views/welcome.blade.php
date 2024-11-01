@@ -46,7 +46,7 @@
 
         // Phone validation
         const phone = $('#phone').val();
-        if (!phone || !/^\d+$/.test(phone)) { // Check if phone contains only digits
+        if (!phone || !/^\d+$/.test(phone) || !/^[6-9]\d{9}$/.test(phone)) { // Check if phone contains only digits
             $('#phone_error').html('Phone must be a valid 10-digit number starting with 6-9.'); // Show error for phone validation
             isValid = false; // Set validity to false
         }
